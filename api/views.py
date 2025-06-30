@@ -131,7 +131,6 @@ class EmployeeDetails(generics.RetrieveUpdateDestroyAPIView):
     serializer_class=EmployeeSerializer
     lookup_field='pk'
     
-'''
     
     
 class EmployeeViewSet(viewsets.ViewSet):
@@ -165,6 +164,14 @@ class EmployeeViewSet(viewsets.ViewSet):
         employee=get_object_or_404(Employee,pk=pk)
         employee.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+        
+'''
+
+# Model set
+
+class EmployeeViewSet(viewsets.ModelViewSet):
+    queryset=Employee.objects.all()
+    serializer_class=EmployeeSerializer
           
         
          
