@@ -177,7 +177,9 @@ class EmployeeViewSet(viewsets.ModelViewSet):
     queryset=Employee.objects.all()
     serializer_class=EmployeeSerializer
           
-        
+
+
+# usibg ut for Nested serializer
 class BlogsView(generics.ListCreateAPIView):
     queryset=Blog.objects.all()
     serializer_class=BlogSerializer

@@ -125,3 +125,11 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+#it is used for creating a pagination for(Global Pagination) all the data(it only send 2 id at a time(because of 'PAGE_SIZE':2) for all api data and also send next and previos id url )
+REST_FRAMEWORK={
+    'DEFAULT_PAGINATION_CLASS':'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE':2,
+    
+}

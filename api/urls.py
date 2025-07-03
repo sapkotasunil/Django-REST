@@ -20,6 +20,6 @@ urlpatterns = [
      path('',include(router.urls)),
      path('blogs/',views.BlogsView.as_view()),
      path('comments/',views.CommentsView.as_view()),
-     path('blogs/<int:id>/',views.BlogDetailsView.as_view()),
-     path('comments/<int:id>/',views.CommentsDetailsView.as_view())
+     path('blogs/<int:pk>/',views.BlogDetailsView.as_view()),
+     path('comments/<int:pk>/',views.CommentsDetailsView.as_view())
 ] 
