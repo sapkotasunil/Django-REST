@@ -11,6 +11,7 @@ from rest_framework import mixins,generics,viewsets
 from django.shortcuts import get_object_or_404
 from blogs.models import Comment,Blog
 from blogs.serializers import CommentSerializer ,BlogSerializer
+from .paginations import CustomPagination
 
 
 
@@ -176,10 +177,11 @@ class EmployeeViewSet(viewsets.ViewSet):
 class EmployeeViewSet(viewsets.ModelViewSet):
     queryset=Employee.objects.all()
     serializer_class=EmployeeSerializer
+    pagination_class=CustomPagination  #used for custom pagination
           
 
 
-# usibg ut for Nested serializer
+# usibg it for Nested serializer
 class BlogsView(generics.ListCreateAPIView):
     queryset=Blog.objects.all()
     serializer_class=BlogSerializer
