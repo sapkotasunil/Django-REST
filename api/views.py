@@ -12,7 +12,9 @@ from django.shortcuts import get_object_or_404
 from blogs.models import Comment,Blog
 from blogs.serializers import CommentSerializer ,BlogSerializer
 from .paginations import CustomPagination
-
+from employees.filters import EmplyeeFilter
+from employees.filters import EmplyeeFilter
+from rest_framework.filters import SearchFilter,OrderingFilter
 
 
 @api_view(['GET', 'POST'])
@@ -178,14 +180,17 @@ class EmployeeViewSet(viewsets.ModelViewSet):
     queryset=Employee.objects.all()
     serializer_class=EmployeeSerializer
     pagination_class=CustomPagination  #used for custom pagination
-    filterset_fields=['designation']     #used for filtering data according to designation
-
+   # filterset_fields=['designation']     #used for filtering data according to designation(designation is the field or column name of data)
+   # which only retun data which match with case sensetive data
+    filterset_class=EmplyeeFilter #it is a custom filer which return the data case insensetive also 
 
 # usibg it for Nested serializer
 class BlogsView(generics.ListCreateAPIView):
     queryset=Blog.objects.all()
     serializer_class=BlogSerializer
-    
+    filter_backends=[SearchFilter,OrderingFilter]  #used for seraching 
+    search_fields=['blog_title','blog_body']
+    ordering_fields=['id']# displaying data in acending or decending  order through 'id'
     
 class CommentsView(generics.ListCreateAPIView):
     queryset=Comment.objects.all()
